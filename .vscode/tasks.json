@@ -1,0 +1,42 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build tools (macOS)",
+      "type": "shell",
+      "command": "${workspaceFolder}/tools/bootstrap_mac.sh",
+      "problemMatcher": []
+    },
+    {
+      "label": "Quick gauntlet (SF vs SF)",
+      "type": "shell",
+      "command": "${workspaceFolder}/tools/bin/cutechess-cli",
+      "args": [
+        "-tournament","gauntlet",
+        "-concurrency","1",
+        "-pgnout","${workspaceFolder}/runs/quick_sf_vs_sf.pgn",
+
+        "-openings","file=${workspaceFolder}/openings/neutral_50.pgn","format=pgn","order=random","plies=12","policy=round",
+
+        "-each","proto=uci","tc=5+0.05","ponder=false","option.Hash=64","option.Threads=1",
+
+        "-engine","name=SF1","cmd=${workspaceFolder}/engines/stockfish","proto=uci",
+        "-engine","name=SF2","cmd=${workspaceFolder}/engines/stockfish","proto=uci",
+
+        "-draw","movenumber=80","movecount=8","score=10",
+        "-resign","movecount=3","score=900",
+
+        "-games","20",
+        "-repeat"
+      ],
+      "problemMatcher": []
+    },
+    {
+    "label": "Rate with BayesElo (anchor SF1@0)",
+    "type": "shell",
+    "command": "${workspaceFolder}/tools/rate_with_bayeselo.sh",
+    "args": ["${workspaceFolder}/runs/quick_sf_vs_sf.pgn"],
+    "problemMatcher": []
+    }
+  ]
+}

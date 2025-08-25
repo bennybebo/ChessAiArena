@@ -1,0 +1,20 @@
+[
+  {
+    "name": "SF",
+    "command": "${workspaceFolder}/engines/stockfish",
+    "protocol": "uci",
+    "options": [
+      { "name": "Threads", "value": 1 },
+      { "name": "Hash", "value": 64 }
+    ]
+  },
+  {
+    "name": "EUT",
+    "command": "${workspaceFolder}/engines/my_engine_binary",
+    "protocol": "uci",
+    "options": [
+      { "name": "Threads", "value": 1 },
+      { "name": "Hash", "value": 64 }
+    ]
+  }
+]
