@@ -1,6 +1,0 @@
-[submodule "tools/vendor/cutechess"]
-	path = tools/vendor/cutechess
-	url = https://github.com/cutechess/cutechess.git
-[submodule "tools/vendor/ordo"]
-	path = tools/vendor/ordo
-	url = https://github.com/michiguel/Ordo.git
