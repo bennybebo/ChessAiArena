@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Spring Boot: API (dev)",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/api",
+      "mainClass": "com.chessaiarena.api.ApiApplication",
+      "projectName": "api",
+      "console": "integratedTerminal",
+      "env": {
+        "RATE_BASE_URL": "http://localhost:8080"
+      },
+      "args": []
+    },
+    {
+      "type": "debugpy",
+      "name": "Python: rate.py (relative-only)",
+      "request": "launch",
+      "program": "${workspaceFolder}/tools/rate.py",
+      "console": "integratedTerminal",
+      "args": ["--pgn", "runs/quick_sf_vs_sf.pgn"]
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Dev: API + (optional) Python rate",
+      "configurations": [
+        "Spring Boot: API (dev)",
+        "Python: rate.py (relative-only)"
+      ],
+      "stopAll": true
+    }
+  ]
+}
